@@ -1,6 +1,7 @@
+#! /usr/bin/env python
 import argparse
 import sys
-from gsheet import openSS, putTblRowMajorFast
+from gsheets import openSS, putRawTable
 
 if __name__ == '__main__':
   p = argparse.ArgumentParser(description=\
@@ -24,4 +25,4 @@ if __name__ == '__main__':
   ss = openSS(args.key, args.title);
   ws = ss.worksheet(args.sheet);
 
-  putTblRowMajorFast(ws, args.row, args.col, tbl)
+  putRawTable(ws, args.row, args.col, tbl)

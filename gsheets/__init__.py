@@ -12,4 +12,4 @@ placed.
 __version__ = '0.1'
 __author__ = 'Dimitar Bounov'
 
-from .gsheet import openSS, Table
+from .gsheets import openSS, Table, putRawTable
