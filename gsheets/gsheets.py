@@ -20,7 +20,7 @@ def isRectangular(tbl):
 def getRange(ws, startRow, startCol, endRow, endCol):
   return ws.get_addr_int(startRow, startCol) + ':' + ws.get_addr_int(endRow, endCol) 
 
-def putTblRowMajorFast(ws, start_row, start_col, tbl):
+def putRawTable(ws, start_row, start_col, tbl):
 	assert isRectangular(tbl)
 	rows = len(tbl)
 	cols = len(tbl[0])
@@ -55,7 +55,7 @@ class Table:
     header = [ '' ] + self._colNames
     prepRows = [ [ x[0] ] + x[1] for x in zip(self._rowNames, self._contents)]
     try:
-      putTblRowMajorFast(self._ws, self._row, self._col, [ header ] + prepRows)
+      putRawTable(self._ws, self._row, self._col, [ header ] + prepRows)
     except gspread.httpsession.HTTPError as e:
       print e
       print e.code
